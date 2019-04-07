@@ -7,9 +7,9 @@ namespace ariel{
 class PhysicalNumber{
 public:
 Unit u;
-int a;
+double a;
 //constructor
-PhysicalNumber (int a,Unit unit);
+PhysicalNumber (double a,Unit unit);
 //copy constructor
 PhysicalNumber (const PhysicalNumber&);
 

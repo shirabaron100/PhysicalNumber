@@ -6,7 +6,7 @@ using namespace ariel;
 using namespace std;
 
 
-PhysicalNumber::PhysicalNumber (int a,Unit unit):a(a),u(unit){
+PhysicalNumber::PhysicalNumber (double a,Unit unit):a(a),u(unit){
 
 }
 //copy constructor
