@@ -31,7 +31,7 @@ int main() {
     input >> a;
     cout << a << endl;   // Prints "700[kg]"
     cout << (a += PhysicalNumber(1, Unit::TON)) << endl;  // prints "1700[kg]"
-    cout << a << endl;   // Prints "1700[kg]" since a has changed.
+     cout << a << endl;   // Prints "1700[kg]" since a has changed.
 
     try {
       cout << (a+b) << endl;  
