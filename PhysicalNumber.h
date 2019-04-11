@@ -32,10 +32,12 @@ bool operator>=(const PhysicalNumber& PHnum) const;
 bool operator>(const PhysicalNumber& PHnum) const;
 bool operator<(const PhysicalNumber& PHnum) const;
 
-
+//prefix
 PhysicalNumber& operator++();
 PhysicalNumber& operator--();
-
+//postfix
+const PhysicalNumber operator++(int);
+const PhysicalNumber operator--(int);
 double convert_to(double num)const;
 double base(const PhysicalNumber& ph)const;
 bool can_work_together(const PhysicalNumber& ph)const;

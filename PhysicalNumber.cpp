@@ -115,8 +115,7 @@ const PhysicalNumber PhysicalNumber::operator-() const{
       if(a==b)
         return true;
         else return false; 
-    }
-    
+    } 
 }
  bool PhysicalNumber::operator<=(const PhysicalNumber& PHnum) const{
  
@@ -177,13 +176,11 @@ const PhysicalNumber PhysicalNumber::operator-() const{
     {
         double a=base(*this);
         double b=base(PHnum); 
-      if(a<b)
+        if(a<b)
         return true;
         else return false; 
-    }
-    
+    }   
 }
-
 PhysicalNumber& PhysicalNumber::operator++(){
    this->a++;
    return *this;
@@ -191,6 +188,17 @@ PhysicalNumber& PhysicalNumber::operator++(){
 PhysicalNumber& PhysicalNumber::operator--(){
     this->a--;
     return *this;
+}
+const PhysicalNumber PhysicalNumber::operator++(int)
+{
+   PhysicalNumber copy = *this;
+    this->a++;
+    return copy;
+}
+const PhysicalNumber PhysicalNumber::operator--(int){
+    PhysicalNumber copy = *this;
+    this->a--;
+    return copy;
 }
 //private functins
 bool PhysicalNumber::can_work_together( const PhysicalNumber& ph)const
@@ -290,8 +298,7 @@ double PhysicalNumber::convert_to(double num)const{
         else return 1;
 }
 //friends functions:
-ostream& ariel::operator<<(ostream& stream, const PhysicalNumber& c)
-{
+ostream& ariel::operator<<(ostream& stream, const PhysicalNumber& c){
      switch((int)(c.u))
     {
 		case 2: stream<<c.a<<"[g]";
@@ -327,7 +334,7 @@ if(num==-99999)
    std::__throw_bad_exception();
 }
 else
-c.a=num;
+{
 
 Unit unit;
          if(st.compare("[g]")==0)
@@ -354,7 +361,8 @@ Unit unit;
              std::__throw_bad_exception();
          }
          c.u=unit;
-    
+         c.a=num;
+}
 return input;
     }
 //---------------------------------------------
