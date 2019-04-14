@@ -324,14 +324,19 @@ ostream& ariel::operator<<(ostream& stream, const PhysicalNumber& c){
 }
 istream& ariel::operator>>(istream& input, PhysicalNumber& c )
     {
-double num=-99999;
-string st=" ";
-input>>num;
-input>>st;
+        ios::pos_type startPosition =input.tellg();
+        double num=-99999;
+        string st=" ";
+        input>>num;
+        input>>st;
 
 if(num==-99999)
 {
-   std::__throw_bad_exception();
+  auto errorState = input.rdstate();
+          input.clear(); // clear error so seekg will work
+          input.seekg(startPosition); // rewind
+          input.clear(errorState); // set back the error flag
+          return input;
 }
 else
 {
@@ -358,7 +363,11 @@ Unit unit;
         else if(st.compare("[hour]")==0)
         unit=Unit::HOUR;
         else{
-             std::__throw_bad_exception();
+        auto errorState = input.rdstate();
+          input.clear(); // clear error so seekg will work
+          input.seekg(startPosition); // rewind
+          input.clear(errorState); // set back the error flag
+          return input;
          }
          c.u=unit;
          c.a=num;
